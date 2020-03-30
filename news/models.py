@@ -7,7 +7,7 @@ class Topics(models.Model):
     description = models.TextField(null=True)
     published_date = models.CharField(max_length=100,null=True)
     author = models.TextField(null=True)
-    topic_url = models.CharField(max_length=100, null=True)
+    topic_url = models.TextField(max_length=100, null=True)
     image_url = models.TextField(null=True)
     top_news = models.CharField(max_length=8, null=True)
     domain_tags = models.TextField()
