@@ -3,9 +3,9 @@ from django.utils import timezone
 
 
 class Topics(models.Model):
-    title = models.CharField(max_length=400, null=True)
+    title = models.textField(null=True)
     description = models.TextField(null=True)
-    published_date = models.CharField(max_length=100,null=True)
+    published_date = models.TextField(null=True)
     author = models.TextField(null=True)
     topic_url = models.TextField(null=True)
     image_url = models.TextField(null=True)
