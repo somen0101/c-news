@@ -1,0 +1,58 @@
+{% extends 'news/base.html' %}
+
+{% block body %}
+{% load sentencefilter %}
+{% load sentence_translate %}
+<nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+        {% if news_type == 'top' %}
+            <li class="is-active"><a href=""><span class="tag is-medium">トップニュース</span></a></li>
+            <li ><a href="{% url 'news:f-news' domain %}"><span class="tag is-medium is-info is-light is-medium">全ての記事</span></a></li>
+        {% else %}
+            <li><a href="{% url 'news:f-news-top' domain %}"><span class="tag is-info is-light is-medium">トップニュース</span></a></li>
+            <li class="is-active"><a href=""><span class="tag is-medium">全ての記事</span></a></li>
+        {% endif %}
+        </ul>
+ </nav>
+<main class="columns">
+  <div class="column">
+      {% for content in topic %}
+      <article class="box media">
+        <figure class="media-left">
+            <p class="image" style="width: 200px; height: auto;">
+          <img src="{{ content.image_url }}" alt="Placeholder image" style="width: 200px; height: auto;">
+            </p>
+        </figure>
+        <div class="media-content">
+          {% if request.path != "/" %}
+               <p><a href="{{ content.topic_url }}"><strong>{{ content.title }}</strong></a></p>
+          {% else %}
+               <p><a href="{{ content.topic_url }}"><strong>{{ content.title }}</strong></a></p>
+          {% endif %}
+          {% if content.author is None %}
+          <p>
+              <small>{% comment %}{{ content.title | myfilter }}{% endcomment %}</small>
+          </p>
+          {% else %}
+          <p>
+              <small>{{ content.author }}</small>
+          </p>
+          {% endif %}
+         {% if request.path != "/" %}
+          {{ content.description }}
+         {% else %}
+          {{ content.description }}
+         {% endif %}
+        <br>
+        <time>{{ content.published_date }}</time>
+        </div>
+    </article>
+    {% endfor %}
+  </div>
+</main>
+  <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'news/base.html' %}
+
+{% block body %}
+<main class="columns">
+
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-4 is-parent" style="height:700px;">
+    <div class="tile is-child box">
+        <p class="title has-text-centered" style="height:80px;">世界感染状況</p>
+        <div class="columns is-mobile has-text-centered" style="height:170px;">
+          <div class="column">
+          <p class="bd-notification is-info">感染者数</p>
+      　　<p class="title bd-notification is-info ">{{ world_corona.cases}}</p>
+          </div>
+          <div class="column">
+              <p class="bd-notification-is-danger">死者数</p>
+      　　<p class="title bd-notification is-info ">{{ world_corona.deaths}}</p>
+          </div>
+          <div class="column">
+          <p class="bd-notification is-info">回復者数</p>
+      　　<p class="title bd-notification is-info ">{{ world_corona.recovered }}</p>
+          </div>
+        </div>
+        <p class="text-is-light has-text-centered"><small>https://github.com/javieraviles/covidAPI</small></p>
+    </div>
+   <div class="tile is-child box">
+        <p class="title has-text-centered" style="height:80px;">国内感染状況</p>
+        <div class="columns is-mobile has-text-centered" style="height:170px;">
+          <div class="column">
+          <p class="bd-notification is-info">感染者数</p>
+      　　<p class="title bd-notification is-info ">{{ jp_corona.cases }}</p>
+          </div>
+          <div class="column">
+              <p class="bd-notification ">死者数</p>
+      　　<p class="title bd-notification is-info ">{{ jp_corona.deaths }}</p>
+          </div>
+          <div class="column">
+          <p class="bd-notification is-info">回復者数</p>
+      　　<p class="title bd-notification is-info ">{{ jp_corona.recovered }}</p>
+          </div>
+    </div>
+       <p class="text-is-light has-text-centered"><small>https://github.com/javieraviles/covidAPI</small></p>
+  </div>
+  </div>
+  <div class="tile is-parent">
+    <article class="tile is-child notification">
+      <div class="table-container">
+      <table class="table">
+       <thead>
+      <tr>
+      <th><abbr title="Position">No.</abbr></th>
+      <th>国名</th>
+      <th><abbr title="cases">感染者数</abbr></th>
+      <th><abbr title="todayCases">今日の感染者数</abbr></th>
+      <th><abbr title="deaths">死者数</abbr></th>
+      <th><abbr title="todayDeaths">今日の死者数</abbr></th>
+      <th><abbr title="recovered">回復者数</abbr></th>
+      <th><abbr title="active">軽症者</abbr></th>
+      <th><abbr title="critical">重症者</abbr></th>
+      <th><abbr title="firstCase">国内初感染日</abbr></th>
+      </tr>
+      <tbody>
+      {% for content in corona %}
+          <tr>
+           <th>{{ forloop.counter }}</th>
+           <td>{{ content.country }}</td>
+           <td>{{ content.cases }}</td>
+           <td>{{ content.todayCases }}</td>
+           <td>{{ content.deaths }}</td>
+           <td>{{ content.todayDeaths }}</td>
+           <td>{{ content.recovered }}</td>
+           <td>{{ content.active }}</td>
+           <td>{{ content.critical }}</td>
+           <td>{{ content.firstCase }}</td>
+          </tr>
+      {% endfor %}
+      </tbody>
+      </thead>
+    <!-- Your table content -->
+      </table>
+      </div>
+    </article>
+  </div>
+</div>
+</main>
+{% endblock %}

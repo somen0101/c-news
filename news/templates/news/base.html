@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CoronaNews</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <style type="text/css">
+      main {
+      background-color: #eeeeee;
+      }
+    </style>
+<header class="header">
+   <div class="container">
+     <div class="content has-text-centered">
+       ※このサイトのすべての情報は最新、正確ではない可能性がございます。サイト内の情報を使用する場合、ご自身での確認もお願いします。
+     </div>
+   </div>
+</header>
+
+  <body>
+  <div class="hero is-dark is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <a href="{% url 'news:index' %}"><h1 class="title" data-aos="fade-right" data-aos-delay="300">コロナウイルス情報</h1></a>
+        </div>
+    </div>
+  </div>
+　<section class="level">
+      <p class="level-item"><strong>コロナウイルスに関する各国の国内ニュースを集めたサイト</strong></p>
+     <div class="level-item tabs" style="width:900px;">
+         　<li><a href="{% url 'news:index' %}">世界の感染状況</a></li>
+       <ul>
+           <li><a href="{% url 'news:f-news-top' 'jp' %}">&nbsp;&nbsp;国内&nbsp;&nbsp;</a></li>
+           <li><a href="{% url 'news:f-news-top' 'kr' %}">&nbsp;&nbsp;韓国&nbsp;&nbsp;</a></li>
+           <li><a href="{% url 'news:f-news-top' 'us' %}">アメリカ</a></li>
+           <li><a href="{% url 'news:f-news-top' 'gb' %}">イギリス</a></li>
+           <li><a href="{% url 'news:f-news-top' 'it' %}">イタリア</a></li>
+         　<li><a href="{% url 'news:f-news-top' 'de' %}">ドイツ</a></li>
+         　<li><a href="{% url 'news:f-news-top' 'fr' %}">フランス</a></li>
+       </ul>
+      </div>
+　</section>
+　　{% block body %}{% endblock %}
+
+  <style>
+  </style>
+  <footer class="footer">
+   <div class="container">
+     <div class="content has-text-centered">
+       このサイトの全ての記事はリンク先に帰属します。
+     </div>
+   </div>
+</footer>
+  <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  </body>
+</html>
