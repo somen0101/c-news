@@ -3,7 +3,7 @@ from django.utils import timezone
 
 
 class Topics(models.Model):
-    title = models.textField(null=True)
+    title = models.TextField(null=True)
     description = models.TextField(null=True)
     published_date = models.TextField(null=True)
     author = models.TextField(null=True)
